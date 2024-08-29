@@ -20,7 +20,7 @@ const data = {
     <Doughnut 
         data={data} 
         options={{
-            cutout: '80%',
+            cutout: '60%',
             plugins: {
                 legend: {
                     display: false
