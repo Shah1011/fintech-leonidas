@@ -15,7 +15,7 @@ declare type SignUpParams = {
   state: string;
   postalCode: string;
   dateOfBirth: string;
-  ssn: string;
+  nationalIdentityNumber: string;
   email: string;
   password: string;
 };
@@ -186,6 +186,15 @@ declare interface PlaidLinkProps {
 //   accessToken: string;
 //   image: string;
 // };
+
+declare interface CustomInputProps {
+  form: {
+    control: Control<FieldValues>
+  };
+  name: string;
+  label: string;
+  placeholder?: string;
+}
 
 declare interface AuthFormProps {
   type: "sign-in" | "sign-up";
