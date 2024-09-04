@@ -21,9 +21,9 @@ const authformSchema = (type: string) => z.object({
     address1: type === 'sign-in' ? z.string().optional() :  z.string().max(50), 
     city: type === 'sign-in' ? z.string().optional() :  z.string().max(15), 
     state: type === 'sign-in' ? z.string().optional() :  z.string().max(2).min(2),
-    postalCode: type === 'sign-in' ? z.string().optional() :  z.string().min(6),
+    postalCode: type === 'sign-in' ? z.string().optional() :  z.string().min(5),
     dateOfBirth: type === 'sign-in' ? z.string().optional() :  z.string().min(3),
-    nationalIdentityNumber: type === 'sign-in' ? z.string().optional() :  z.string().min(8), 
+    ssn: type === 'sign-in' ? z.string().optional() :  z.string().min(4), 
     // both sign in and sign up validation
     email: z.string().email(),
     password: z.string().min(8),
@@ -60,7 +60,7 @@ const authformSchema = (type: string) => z.object({
                 state: data.state!,
                 postalCode: data.postalCode!,
                 dateOfBirth: data.dateOfBirth!,
-                nationalIdentityNumber: data.nationalIdentityNumber!,
+                ssn: data.ssn!,
                 email: data.email,
                 password: data.password
             }
@@ -110,11 +110,11 @@ const authformSchema = (type: string) => z.object({
                 </p>
             </div>
         </header>
-        {/* {user ? ( */}
+        {user ? (
             <div className='flex flex-col gap-4'>
                 <PlaidLink user={user} variant="primary" />
             </div>
-        {/* ): ( */}
+        ) : ( 
             <>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -142,20 +142,20 @@ const authformSchema = (type: string) => z.object({
                                 />
                                 <CustomInput
                                     name='city'
-                                    placeholder='e.g. Bengaluru'
+                                    placeholder='e.g. New York'
                                     label='City'
                                     form={form}
                                 />
                             <div className='flex gap-4'>
                                 <CustomInput
                                     name='state'
-                                    placeholder='e.g. KA'
+                                    placeholder='e.g. NY'
                                     label='State'
                                     form={form}
                                 />
                                 <CustomInput
                                     name='postalCode'
-                                    placeholder='e.g. 560001'
+                                    placeholder='e.g. 12345'
                                     label='Postal Code'
                                     form={form}
                                 />
@@ -168,9 +168,9 @@ const authformSchema = (type: string) => z.object({
                                     form={form}
                                 />
                                 <CustomInput
-                                    name='nationalIdentityNumber'
-                                    placeholder='e.g. Aadhar'
-                                    label='National Identity Number'
+                                    name='ssn'
+                                    placeholder='e.g. 1234'
+                                    label='SSN'
                                     form={form}
                                 />
                             </div>
@@ -216,7 +216,7 @@ const authformSchema = (type: string) => z.object({
                     </Link>               
                 </footer>
             </>
-        {/* )} */}
+        )} 
     </section>
   )
 }
