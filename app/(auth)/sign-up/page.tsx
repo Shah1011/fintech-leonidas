@@ -7,7 +7,7 @@ const SignUp = async () => {
   console.log(loggedInUser);
 
   return (
-    <section className='flex-center size-full max-sm:px-6'>
+    <section className='flex justify-center items-center w-1/2 p-10 max-sm:w-full'>
       <AuthForm type="sign-up"/>
     </section>
   )

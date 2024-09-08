@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Leonidas",
   description: "A Fintech banking transaction processing web application project",
   icons: {
-    icon: "/icons/logo.svg"
+    icon: "/icons/logo.png"
   }
 };
 

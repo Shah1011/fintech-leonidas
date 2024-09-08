@@ -10,30 +10,46 @@ const Footer = ({ user, type = 'desktop' }: FooterProps) => {
     if(loggedOut) router.push('/login');
   }
 
+    // Format the email by showing first 8 and last 10 characters
+    const formatEmail = (email: string) => {
+        if (email.length <= 18) return email; // No need to truncate if the email is short
+        return `${email.slice(0, 8)}...${email.slice(-10)}`;
+    };
+
 return (
-    <footer className="footer">
-        <div className={type === 'mobile' ? 'footer_name-mobile' : 'footer_name'}>
-            <p className="text-xl font-bold text-gray-700">
-                {user?.firstName[0]}
-            </p>
+    <footer className="flex flex-col">
+        <div className="footer">
+            <div className={type === 'mobile' ? 'footer_name-mobile' : 'footer_name'}>
+                <p className="text-xl font-bold text-gray-700">
+                    {user?.firstName[0]}
+                </p>
+            </div>
+
+            <div className={type === 'mobile' ? 'footer_email-mobile' : 'footer_email'}>
+                <h1 className="text-14 truncate text-gray-700 font-semibold">
+                    {user?.firstName}
+                </h1>
+                <p className="text-12 truncate font-normal text-gray-600" title={user?.email}>
+                    {user?.email ? formatEmail(user.email) : ''}
+                </p>
+            </div>
         </div>
 
-        <div className={type === 'mobile' ? 'footer_email-mobile' : 'footer_email'}>
-            <h1 className="text-14 truncate text-gray-700 font-semibold">
-                {user?.firstName}
-            </h1>
-            <p className="text-14 truncate font-normal text-gray-600">
-                {user?.email}
-            </p>
+        <div className="flex gap-2 items-center justify-center cursor-pointer" onClick={handleLogout}>            
+            <div className="footer_image">
+                <Image
+                    src="/icons/logout.svg" 
+                    alt="logout"
+                    fill
+                />
+            </div>
+            <div>
+                <p className="text-14 truncate text-gray-700 font-semibold">
+                    Logout
+                </p>
+            </div>
         </div>
 
-        <div className="footer_image" onClick={handleLogout}>
-            <Image
-                src="/icons/logout.svg" 
-                alt="logout"
-                fill
-            />
-        </div>
     </footer>
   )
 }

@@ -87,7 +87,7 @@ const authformSchema = (type: string) => z.object({
         <header className='flex flex-col gap-5 md:gap-8'>
             <Link href="/" className='flex cursor-pointer items-center gap-1'>
                 <Image 
-                    src="/icons/logo.svg" 
+                    src="/icons/logo.png" 
                     width={34} 
                     height={34} 
                     alt='Leonidas-logo'

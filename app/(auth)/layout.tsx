@@ -8,16 +8,15 @@ export default function RootLayout({
     return (
       <main className="flex min-h-screen w-full justify-between font-inter">
           {children}
-          <div className="auth-asset">
-            <div>
+            <div className="fixed top-0 right-0 max-h-screen w-auto max-sm:hidden">
               <Image
-                src="/icons/auth-image.svg"
+                src="/icons/auth-image.jpg"
                 alt="auth-image"
-                width={500}
-                height={500}
+                width={600}
+                height={800}
+                className="object-cover max-h-screen"
               />
             </div>
-          </div>
       </main>
     );
   }
